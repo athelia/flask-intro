@@ -18,7 +18,15 @@ AWESOMENESS = [
 def start_here():
     """Home page."""
 
-    return "<!doctype html><html>Hi! This is the home page.</html>"
+    return """<!doctype html>
+    <html>
+      Hi! This is the home page.
+        <section>
+          <a href='/hello'>
+            Hello page :)
+          </a>
+        </section>
+    </html>"""
 
 
 @app.route("/hello")
@@ -33,8 +41,27 @@ def say_hello():
       </head>
       <body>
         <h1>Hi There!</h1>
-        <form action="/greet">
-          What's your name? <input type="text" name="person">
+        <section name="name-entry">
+                <label for="person">What's your name?</label>
+                    <input type="text" name="person">
+            </section>
+            <section name="choose-compliment">
+                <label for="compliment">Please choose your compliment:</label>
+                    <input type="radio" name="compliment" value="awesome">Awesome
+                    <input type="radio" name="compliment" value="terrific">Terrific
+                    <input type="radio" name="compliment" value="fantastic">Fantastic
+                    <input type="radio" name="compliment" value="neato">Neato
+                    <input type="radio" name="compliment" value="fantabulous">Fantabulous
+                    <input type="radio" name="compliment" value="wowza">Wowza
+                    <input type="radio" name="compliment" value="oh-so-not-meh">Oh-so-not-meh
+                    <input type="radio" name="compliment" value="brilliant">Brilliant
+                    <input type="radio" name="compliment" value="ducky">Ducky
+                    <input type="radio" name="compliment" value="coolio">Coolio
+                    <input type="radio" name="compliment" value="incredible">Incredible
+                    <input type="radio" name="compliment" value="wonderful">Wonderful
+                    <input type="radio" name="compliment" value="smashing">Smashing
+                    <input type="radio" name="compliment" value="lovely">Lovely
+
           <input type="submit" value="Submit">
         </form>
       </body>
@@ -68,4 +95,4 @@ def greet_person():
 if __name__ == "__main__":
     # debug=True gives us error messages in the browser and also "reloads"
     # our web app if we change the code.
-    app.run(debug=False, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")
