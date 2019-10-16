@@ -29,6 +29,47 @@ def start_here():
     </html>"""
 
 
+@app.route("/diss")
+def disrespect():
+  """Diss user by name."""
+
+  
+
+  return """
+  <!doctype html>
+    <html>
+      <head>
+        <title>Hi There!</title>
+      </head>
+      <body>
+        <h1>Hi There!</h1>
+        <form action='/greet'>
+          <section class="form-inputs" id="input-name">
+              <label for="full-name">What's your name?</label>
+              <input type="text" id="full-name" name="person">
+          </section>
+          <section class="form-inputs" id="choose-diss">
+            <label for="diss">Please choose your diss:</label>
+            <select name="diss">
+              <option value="terrible">Terrible</option>
+              <option value="smelly">Smelly</option>
+              <option value="lazy">Lazy</option>
+            </select>
+          </section>
+
+          <section class="buttons" id="submit-button">
+            <input type="submit" value="Submit">
+          </section>
+
+          <section class="links">
+            <a href="/hello">Get a compliment!</a>
+          </section>
+        </form>
+      </body>
+    </html>
+    """
+
+
 @app.route("/hello")
 def say_hello():
     """Say hello and prompt for user's name."""
@@ -67,6 +108,10 @@ def say_hello():
           <section class="buttons" id="submit-button">
             <input type="submit" value="Submit">
           </section>
+
+          <section class="links">
+            <a href="/diss">Get a diss!</a>
+          </section>
         </form>
       </body>
     </html>
@@ -75,11 +120,14 @@ def say_hello():
 
 @app.route("/greet")
 def greet_person():
-    """Get user by name."""
+    """Compliment user by name."""
 
     player = request.args.get("person")
 
-    compliment = request.args.get("compliment")
+    if request.args.get("compliment"):
+      adjective = request.args.get("compliment")
+    else:
+      adjective = request.args.get("diss")
 
 
     return """
@@ -92,7 +140,7 @@ def greet_person():
         Hi, {}! I think you're {}!
       </body>
     </html>
-    """.format(player, compliment)
+    """.format(player, adjective)
 
 
 if __name__ == "__main__":
