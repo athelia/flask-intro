@@ -41,28 +41,32 @@ def say_hello():
       </head>
       <body>
         <h1>Hi There!</h1>
-        <section name="name-entry">
-                <label for="person">What's your name?</label>
-                    <input type="text" name="person">
-            </section>
-            <section name="choose-compliment">
-                <label for="compliment">Please choose your compliment:</label>
-                    <input type="radio" name="compliment" value="awesome">Awesome
-                    <input type="radio" name="compliment" value="terrific">Terrific
-                    <input type="radio" name="compliment" value="fantastic">Fantastic
-                    <input type="radio" name="compliment" value="neato">Neato
-                    <input type="radio" name="compliment" value="fantabulous">Fantabulous
-                    <input type="radio" name="compliment" value="wowza">Wowza
-                    <input type="radio" name="compliment" value="oh-so-not-meh">Oh-so-not-meh
-                    <input type="radio" name="compliment" value="brilliant">Brilliant
-                    <input type="radio" name="compliment" value="ducky">Ducky
-                    <input type="radio" name="compliment" value="coolio">Coolio
-                    <input type="radio" name="compliment" value="incredible">Incredible
-                    <input type="radio" name="compliment" value="wonderful">Wonderful
-                    <input type="radio" name="compliment" value="smashing">Smashing
-                    <input type="radio" name="compliment" value="lovely">Lovely
+        <form action='/greet'>
+          <section class="form-inputs" id="input-name">
+              <label for="full-name">What's your name?</label>
+              <input type="text" id="full-name" name="person">
+          </section>
+          <section class="form-inputs" id="choose-compliment">
+            <label for="compliment">Please choose your compliment:</label>
+            <input type="radio" id="compliment" name="compliment" value="awesome">Awesome
+            <input type="radio" id="compliment" name="compliment" value="terrific">Terrific
+            <input type="radio" id="compliment" name="compliment" value="fantastic">Fantastic
+            <input type="radio" id="compliment" name="compliment" value="neato">Neato
+            <input type="radio" id="compliment" name="compliment" value="fantabulous">Fantabulous
+            <input type="radio" id="compliment" name="compliment" value="wowza">Wowza
+            <input type="radio" id="compliment" name="compliment" value="oh-so-not-meh">Oh-so-not-meh
+            <input type="radio" id="compliment" name="compliment" value="brilliant">Brilliant
+            <input type="radio" id="compliment" name="compliment" value="ducky">Ducky
+            <input type="radio" id="compliment" name="compliment" value="coolio">Coolio
+            <input type="radio" id="compliment" name="compliment" value="incredible">Incredible
+            <input type="radio" id="compliment" name="compliment" value="wonderful">Wonderful
+            <input type="radio" id="compliment" name="compliment" value="smashing">Smashing
+            <input type="radio" id="compliment" name="compliment" value="lovely">Lovely
+          </section>
 
-          <input type="submit" value="Submit">
+          <section class="buttons" id="submit-button">
+            <input type="submit" value="Submit">
+          </section>
         </form>
       </body>
     </html>
@@ -75,9 +79,8 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    compliment = request.args.get("compliment")
 
-    y = x
 
     return """
     <!doctype html>
